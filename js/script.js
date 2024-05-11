@@ -10,20 +10,22 @@
 function myButtonClicked() {
 
   // input
-  const numberA = parseInt(document.getElementById('number-a').value)
-  const numberB = parseInt(document.getElementById('number-b').value)
-  let remainder = numberA
-  let output = 0
+  let numberA = parseInt(document.getElementById("number-a").value)
+  const numberB = parseInt(document.getElementById("number-b").value)
+  let counter = 0
+  let remainder = 0
 
-  // process
-
-  while (remainder >= numberB) {
-    remainder -= numberB
-    output++
+  while (true) {
+    if (numberA < numberB) {
+      remainder += numberA
+      break
+    } else {
+      document.getElementById("answer").innerHTML += numberA + " - " + numberB + " = " + (numberA - numberB) + "<br />"
+    }
+    numberA -= Math.abs(numberB)
+    counter++
+    console.log(numberA)
   }
-  if (remainder > 0) {
-    document.getElementById('answer').innerHTML = numberA + " ÷ " + numberB + " = " + output + " with a remainder of " + remainder + "."
-  } else {
-    document.getElementById('answer').innerHTML = numberA + " ÷ " + numberB + " = " + output + "."
-  }
+  console.log(numberA)
+  document.getElementById("answer").innerHTML += "The answer is = " + counter + " with a remainder of " + remainder
 }
